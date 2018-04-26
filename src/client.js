@@ -1,4 +1,4 @@
-var PROTO_PATH = __dirname + "/../../.proto";
+var PROTO_PATH = __dirname + "/../.proto";
 var grpc = require("grpc");
 var Rx = require("rxjs/Rx");
 
