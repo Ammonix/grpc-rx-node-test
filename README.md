@@ -1,2 +1,2 @@
 # grpc-rx-node-test 
-grpc to rx in node 
+grpx duplex with rx in node (es6)
