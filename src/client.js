@@ -1,9 +1,9 @@
 var PROTO_PATH = __dirname + "/../../.proto";
-var async = require("async");
 var grpc = require("grpc");
 var Rx = require("rxjs/Rx");
 
 var ammochat = grpc.load(PROTO_PATH).ammochat;
+
 var client = new ammochat.AmmoChat(
   "localhost:50051",
   grpc.credentials.createInsecure()
@@ -25,9 +25,7 @@ const input$ = Rx.Observable.range(1, Math.random() * 10).pipe(
 
 const runChat = () => {
   const call = client.chat();
-
   Rx.Observable.fromEvent(call, "data").subscribe(console.log);
-
   input$.subscribe({
     next: content => call.write({ id, content }),
     complete: () => call.end()

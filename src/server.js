@@ -8,12 +8,12 @@ const messages$ = new Rx.ReplaySubject(5);
 
 function chat(call) {
   console.info("new client");
-  const sub = messages$.subscribe(i => call.write(i));
+  const msgsSub = messages$.subscribe(i => call.write(i));
   call.on("data", i => messages$.next(i));
   call.on("end", () => {
     console.info("end client");
     call.end();
-    sub.unsubscribe();
+    msgsSub.unsubscribe();
   });
 }
 
