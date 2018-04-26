@@ -1,0 +1,12 @@
+﻿syntax = "proto3";
+
+package ammochat;
+
+service AmmoChat{
+	rpc chat(stream ChatMessage) returns (stream ChatMessage);
+}
+
+message ChatMessage {
+	string id = 1;
+	string content = 2;
+}
